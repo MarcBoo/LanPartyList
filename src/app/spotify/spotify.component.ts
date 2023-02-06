@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { Spotify } from '../spotify';
+import { from } from 'rxjs';
 import { SpotifyService } from '../spotify.service';
+import { SongResponse, Song } from '../song';
+
 
 @Component({
   selector: 'app-spotify',
@@ -11,21 +11,28 @@ import { SpotifyService } from '../spotify.service';
 })
 
 export class SpotifyComponent implements OnInit {
+  query = '';
+  songs: Song[] = [];
 
-  lists!: Spotify[];
-  list: Spotify = new Spotify();
-  constructor(private spotifyService: SpotifyService, private router: Router,) { }
+  constructor(private spotifyService: SpotifyService) {}
 
   ngOnInit() {
-    this.spotifyService.getLists().subscribe(data => {
-      console.log(data);
-      this.lists = data;
-    })
+    
   }
-  spotifyDetails(id: number) {
-    this.router.navigate(['users', id]);
-    console.log(id);
 
-  } 
+  searchSongs() {
+    this.spotifyService.searchSongs(this.query)
+        .subscribe(res =>{
+          console.log(res.tracks.items)
+        })
+  }
 
-}
+  /*
+  searchSongs() {
+    this.spotifyService.searchSongs(this.query).subscribe((data: SongResponse) => this.songs)
+        this.songs = this.songs;
+      }
+     this.spotifyService.searchSongs(this.query).subscribe((data: SongResponse) => {
+      this.songs = data.tracks; this.songs = data.tracks.items; 
+    }); */
+  }
