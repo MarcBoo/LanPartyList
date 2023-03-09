@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { from } from 'rxjs';
 import { SpotifyService } from '../spotify.service';
 import { SongResponse, Song } from '../song';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -11,28 +12,13 @@ import { SongResponse, Song } from '../song';
 })
 
 export class SpotifyComponent implements OnInit {
-  query = '';
-  songs: Song[] = [];
+  topReadList: any[] = [];
 
-  constructor(private spotifyService: SpotifyService) {}
+  constructor(private http: HttpClient) { }
 
-  ngOnInit() {
-    
+  ngOnInit(): void {
+    this.http.get('http://localhost:8080/test', { withCredentials: true }).subscribe((data: any) => {
+      this.topReadList = data;
+    });
   }
-
-  searchSongs() {
-    this.spotifyService.searchSongs(this.query)
-        .subscribe(res =>{
-          console.log(res.tracks.items)
-        })
-  }
-
-  /*
-  searchSongs() {
-    this.spotifyService.searchSongs(this.query).subscribe((data: SongResponse) => this.songs)
-        this.songs = this.songs;
-      }
-     this.spotifyService.searchSongs(this.query).subscribe((data: SongResponse) => {
-      this.songs = data.tracks; this.songs = data.tracks.items; 
-    }); */
   }

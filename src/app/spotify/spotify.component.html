@@ -1,9 +1,7 @@
 <h1>Header Search</h1>
 <div>
-    <input [(ngModel)]="query" placeholder="Search for songs">
-    <button (click)="searchSongs()">Search</button>
+    <h2>Top Read List</h2>
     <ul>
-        <li *ngFor="let song of songs">{{ song }}</li><!-- {{ song.name }} by {{ song.artists[0].name }} -->
-        <li>{{ query }}</li>
-    </ul> 
+      <li *ngFor="let item of topReadList">{{ topReadList | json }}</li>
+    </ul>
 </div>
