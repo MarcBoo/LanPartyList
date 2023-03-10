@@ -2,10 +2,17 @@
     <h2>Top Read List</h2>
     <ul>
       <li *ngFor="let item of topReadList">
-        <span>{{item.name}}</span> <br>
+        <span>{{item.name}}</span>
+        <br>
         <span *ngFor="let x of item.artists">
           {{x.name}}
-        </span>
+        </span> 
+        <br>
+        <ng-container *ngFor="let y of item.album.images; let firstImage=first">
+          <span *ngIf="firstImage">
+            <img src={{y.url}}  width="50" height="50">
+          </span>
+        </ng-container>
       </li>
     </ul>
 </div>
