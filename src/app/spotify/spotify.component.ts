@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { from } from 'rxjs';
 import { SpotifyService } from '../spotify.service';
-import { SongResponse, Song } from '../song';
+import { SongResponse } from '../song';
 import { HttpClient } from '@angular/common/http';
 
 

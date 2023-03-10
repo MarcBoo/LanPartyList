@@ -1,8 +1,3 @@
-export interface Song {
-    name: string;
-    artists: Array<{ name: string }>;
-  }
-  
   export interface SongResponse {
     album: {
       album_type: string,
@@ -63,8 +58,4 @@ export interface Song {
     track_number: number,
     type: string,
     uri: string
-  }
-  
-  interface SpotifyData {
-    items: SongResponse[]
   }

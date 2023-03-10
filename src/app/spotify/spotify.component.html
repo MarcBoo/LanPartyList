@@ -1,8 +1,9 @@
 <div>
     <h2>Top Read List</h2>
     <ul>
-      <li *ngFor="let item of topReadList">
-        {{ item.album }} - {{ item.artists }}
+      <li *ngFor="let item of topReadList | keyvalue">
+        <span>{{ item.key }}</span>
+        <span>{{item.value}}</span>
       </li>
     </ul>
 </div>
