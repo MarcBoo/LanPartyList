@@ -12,13 +12,13 @@ import { HttpClient } from '@angular/common/http';
 })
 
 export class SpotifyComponent implements OnInit {
-  topReadList: SongResponse[];
+  topReadList: SongResponse[] = [];
 
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.http.get('/api/test', { withCredentials: true }).subscribe((data: any) => {
-      this.topReadList = data;
+    this.http.get<SongResponse[]>('/api/test', { withCredentials: true }).subscribe((data: any) => {
+      this.topReadList = data.items;
     });
   }
   }
