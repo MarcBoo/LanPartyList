@@ -1,7 +1,8 @@
-<h1>Header Search</h1>
 <div>
     <h2>Top Read List</h2>
     <ul>
-      <li *ngFor="let item of topReadList">{{ topReadList | json }}</li>
+      <li *ngFor="let item of topReadList">
+        {{ item.album }} - {{ item.artists }}
+      </li>
     </ul>
 </div>
