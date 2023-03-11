@@ -1,10 +1,14 @@
-li{
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    text-align: center;
-}
-ul{
-    columns: 2;
-}
-span{
-    word-break: break-all;
-}
+.example-card {
+    max-width: 400px;
+    margin: 5%;
+    box-shadow: 2px 2px 5px #000000;
+    background-color: rgb(212, 212, 212);
+  }
+  
+  .example-header-image {
+    background-size: cover;
+  }
+  button{
+    margin: 1%;
+    left: 30%;
+  }
