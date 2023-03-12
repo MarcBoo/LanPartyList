@@ -14,9 +14,22 @@ export class SpotifyComponent implements OnInit {
 
   constructor(private http: HttpClient) { }
 
-  ngOnInit(): void {
-    this.http.get<SongResponse[]>('/api/test', { withCredentials: true }).subscribe((data: any) => {
+  //Slider
+  
+  max = 100;
+  min = 1;
+  showTicks = true;
+  step = 1;
+  thumbLabel = true;
+  value = 25;
+
+  getTopSongs(){
+    this.http.get<SongResponse[]>('/api/test/' + this.value, { withCredentials: true }).subscribe((data: any) => {
       this.topReadList = data.items;
     });
+  }
+
+  ngOnInit(): void {
+    this.getTopSongs();
   }
   }
